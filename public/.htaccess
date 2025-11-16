@@ -1,0 +1,12 @@
+# Activar el motor de reescritura
+RewriteEngine On
+
+# 1️⃣ Forzar HTTPS y WWW
+# Si no usa HTTPS, redirige a HTTPS
+RewriteCond %{HTTPS} !=on [OR]
+# Si no tiene "www", redirige también
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2️⃣ Establecer index.html como archivo predeterminado
+DirectoryIndex index.html

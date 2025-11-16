@@ -6,11 +6,13 @@ import "@fontsource/roboto/700.css";
 import "normalize.css";
 import "primeicons/primeicons.css";
 import { useState, type FC } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "swiper/swiper-bundle.css";
 import Content from "./Components/Layout/Content";
 import Footer from "./Components/Layout/Footer";
 import Header from "./Components/Layout/Header";
+import Seo from "./Seo";
 import { darkTheme, lightTheme } from "./utilities/theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -27,16 +29,29 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode] = useState(true);
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <GlobalStyle />
-      <div>
-        <Header />
-        <Content />
-        <Footer />
-      </div>
+      <HelmetProvider>
+        <GlobalStyle />
+        <Seo
+          title="Cristian Anzola - Portfolio"
+          description="Welcome to my portfolio website showcasing my projects, skills, and experience as a developer."
+          canonical="https://www.cristian-anzola.xyz/"
+          schemaMarkup={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Cristian Anzola Portfolio",
+            url: "https://www.cristian-anzola.xyz/",
+          }}
+        />
+        <div>
+          <Header />
+          <Content />
+          <Footer />
+        </div>
+      </HelmetProvider>
     </ThemeProvider>
   );
 };

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="CA hexagon logo">
+  <defs>
+    <!-- Gradiente diagonal oscuro a celeste -->
+    <linearGradient id="hexGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgb(2,6,23)"></stop>
+      <stop offset="1" stop-color="#2fc7ed"></stop>
+    </linearGradient>
+
+    <!-- Sombra suave -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.3"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Hexágono -->
+  <polygon points="150,20 270,90 270,210 150,280 30,210 30,90" fill="url(#hexGradient)" filter="url(#shadow)" stroke="none"></polygon>
+
+  <!-- Letras CA -->
+  <text x="150" y="190" text-anchor="middle" font-family="Poppins, Inter, sans-serif" font-weight="800" font-size="130" fill="white" letter-spacing="-8">
+    CA
+  </text>
+</svg>
